@@ -1,94 +1,68 @@
-# Next.js Static Site Template
+# 銀座Now
 
-Next.js 16 + React 19 + TypeScript を使用した静的サイト生成のテンプレートリポジトリです。GitHub Pages へのデプロイが自動化されています。
+銀座・有楽町・日比谷で開催中のイベント、展覧会、催事、イルミネーション、ニューオープンなどの最新情報を、ニュース記事として届ける静的Webメディアです。姉妹サイト「アキバLive」（akiba）、浅草（asakusa）と同じ構成（Next.js の静的出力 + JSON 管理）で作っています。
+
+本番URL（予定）: `https://ginza.reload.co.jp`（`NEXT_PUBLIC_SITE_URL` で変更可）
 
 ## 技術スタック
 
-- **Next.js** 16 - App Router / Static Export
-- **React** 19
-- **TypeScript** 5
-- **ESLint** 9 - Flat Config
-- **Prettier** 3
+- Next.js 16（App Router / `output: "export"`）
+- React 19 / TypeScript
+- `marked`（記事本文の Markdown 変換）
+- Vitest + Testing Library
+- GitHub Pages へ自動デプロイ（main への push と毎日 JST 0:05 の再ビルド）
 
-## このテンプレートの使い方
+## コマンド
 
-1. **「Use this template」ボタン**をクリックして新しいリポジトリを作成
-2. リポジトリをクローン
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
-   cd YOUR_REPO
-   ```
-3. 依存関係をインストール
-   ```bash
-   pnpm install
-   ```
-4. 開発サーバーを起動
-   ```bash
-   pnpm dev
-   ```
-
-## セットアップ後にやること
-
-### 1. `next.config.js` の修正
-
-`basePath` をリポジトリ名に変更してください：
-
-```js
-basePath: process.env.NODE_ENV === "production" ? "/YOUR_REPO_NAME" : "",
+```bash
+pnpm install
+pnpm dev                 # 開発サーバー
+pnpm build               # 静的出力（out/）
+pnpm test                # ユニットテスト
+pnpm lint
+pnpm typecheck
+pnpm validate:articles   # data/articles.json の整合性チェック
 ```
 
-### 2. `app/layout.tsx` の修正
+## ページ構成
 
-メタデータとサイト情報を更新してください：
+- `/` トップ（今日の銀座・開催中・これから・今週末・新着・エリア・タグ）
+- `/articles/` 新着記事一覧、`/articles/[slug]/` 記事詳細
+- `/events/` イベント一覧（開催中・開催予定・終了）
+- `/events/today/` 今日行けるイベント
+- `/events/this-weekend/` 今週末のイベント
+- `/events/upcoming/` これから始まるイベント
+- `/areas/`、`/areas/[area]/` エリア別
+- `/tags/`、`/tags/[id]/` タグ別
+- `/search/` 記事検索（クライアントサイド）
+- `/about/`、`/privacy/`
+- `/rss.xml`、`/sitemap.xml`、`/news-sitemap.xml`、`/robots.txt`
 
-```tsx
-export const metadata: Metadata = {
-  title: "Your Site Title",
-  description: "Your site description",
-}
-```
+「今日」「今週末」などの判定はビルド時の日本時間で行います。毎日再ビルドすることで表示を更新します。`GINZA_TODAY=2026-12-24 pnpm build` のように日付を固定して確認できます。
 
-### 3. GitHub Pages の設定
+## データ
 
-1. リポジトリの **Settings** → **Pages** へ移動
-2. **Source** を「GitHub Actions」に設定
+- `data/articles.json`: 記事（イベント情報を含む）
+- `data/tags.json`: タグマスタ
+- `data/areas.json`: エリアマスタ（`ginza` / `yurakucho-hibiya` / `higashi-ginza` / `kyobashi`）
+- `public/images/articles/`: 記事サムネイル
+
+記事の形式・執筆ルールは `.claude/skills/ginza-article-writer/SKILL.md`、情報源の一覧は同ディレクトリの `references/source-list.md` を参照してください。型定義は `lib/articles.ts` にあります。
 
 ## ディレクトリ構成
 
-```
-.
-├── app/
-│   ├── layout.tsx      # ルートレイアウト
-│   ├── page.tsx        # ホームページ
-│   └── reset.css       # CSSリセット
-├── .github/
-│   └── workflows/
-│       ├── lint.yml    # リント自動実行
-│       └── deploy.yml  # GitHub Pages 自動デプロイ
-├── next.config.js      # Next.js 設定
-├── tsconfig.json       # TypeScript 設定
-├── eslint.config.mjs   # ESLint 設定
-└── .prettierrc.json    # Prettier 設定
+```text
+app/          ルーティング（ページ、RSS、サイトマップ）
+components/   共通UI（レイアウト、記事カード、パンくず、検索）
+data/         JSONデータ
+lib/          データアクセス、日付処理、フィード生成
+public/       画像など静的ファイル
+scripts/      検証スクリプト
 ```
 
-## スクリプト
+## 今後の拡張候補
 
-| コマンド | 説明 |
-|---------|------|
-| `pnpm dev` | 開発サーバーを起動 |
-| `pnpm build` | 静的サイトをビルド（`/out` に出力） |
-| `pnpm lint` | ESLint を実行 |
-| `pnpm format` | Prettier でコードをフォーマット |
-| `pnpm typecheck` | TypeScript の型チェック |
-
-## 機能
-
-- **静的サイト生成** - `next build` で `/out` に HTML を出力
-- **自動デプロイ** - main ブランチへの push で GitHub Pages に自動デプロイ
-- **自動リント** - push 時に ESLint / Prettier チェックを実行
-- **依存関係の自動更新** - Dependabot による週次チェック
-- **エディタ設定** - VS Code での自動フォーマット設定済み
-
-## ライセンス
-
-ISC
+- 英語・中国語ページ（akiba の `en` / `zh` フィールド方式）
+- 会場（スポット）マスタと地図表示
+- 記事収集の自動化（akiba の harvester 相当）
+- アクセス解析・広告の導入
