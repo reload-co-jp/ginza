@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+  schedule:
+    # 毎日 JST 00:05 に再ビルドし、開催中イベント・日付表示を更新
+    - cron: "5 15 * * *"
   workflow_dispatch:
 
 permissions:

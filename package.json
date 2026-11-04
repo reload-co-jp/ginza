@@ -1,7 +1,7 @@
 {
-  "name": "page",
+  "name": "ginza",
   "version": "1.0.0",
-  "description": "",
+  "description": "銀座のイベント・最新情報メディア「銀座Now」",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -12,13 +12,15 @@
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "validate:articles": "node scripts/validate-articles.mjs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@12.15.0",
   "dependencies": {
+    "marked": "^18.1.3",
     "next": "^16.4.3",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
