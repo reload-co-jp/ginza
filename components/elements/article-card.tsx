@@ -1,4 +1,6 @@
 import Link from "next/link"
+import { Fragment } from "react"
+import { InArticleAd } from "@/components/elements/ad"
 import {
   type Article,
   getAreaById,
@@ -84,6 +86,9 @@ export const ArticleCard = ({
   )
 }
 
+// 一覧ではカード4枚ごとに記事内広告を挟む（末尾には置かない）
+export const AD_INTERVAL = 4
+
 export const ArticleGrid = ({
   articles,
   today,
@@ -102,13 +107,19 @@ export const ArticleGrid = ({
   ) : (
     <ul className="card-grid">
       {articles.map((article, i) => (
-        <ArticleCard
-          key={article.slug}
-          article={article}
-          today={today}
-          headingLevel={headingLevel}
-          eager={i < eagerCount}
-        />
+        <Fragment key={article.slug}>
+          <ArticleCard
+            article={article}
+            today={today}
+            headingLevel={headingLevel}
+            eager={i < eagerCount}
+          />
+          {(i + 1) % AD_INTERVAL === 0 && i < articles.length - 1 && (
+            <li className="ad-slot">
+              <InArticleAd />
+            </li>
+          )}
+        </Fragment>
       ))}
     </ul>
   )

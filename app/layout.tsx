@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Script from "next/script"
-import { Footer, Header, Main } from "@/components/elements/layout"
+import { PageAd, TransitionOverlay } from "@/components/elements/ad"
+import { Footer, Header, Main, navItems } from "@/components/elements/layout"
 import { jsonLdScript } from "@/lib/json-ld"
 import {
   absoluteUrl,
@@ -75,8 +76,16 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
         本文へスキップ
       </a>
       <Header />
-      <Main>{children}</Main>
+      <Main>
+        {children}
+        <PageAd />
+      </Main>
       <Footer />
+      <TransitionOverlay
+        labels={{ label: "広告", close: "閉じる", top: "トップへ" }}
+        links={navItems}
+        topHref="/"
+      />
       <Script
         async
         crossOrigin="anonymous"
