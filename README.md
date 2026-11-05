@@ -22,6 +22,8 @@ pnpm test                # ユニットテスト
 pnpm lint
 pnpm typecheck
 pnpm validate:articles   # data/articles.json の整合性チェック
+pnpm harvest scan        # 新規記事候補の収集（tmp/harvest-queue.json）
+pnpm harvest:auto        # 収集 → Claude Code で記事化 → 検証（要 claude CLI）
 ```
 
 ## ページ構成
@@ -49,6 +51,16 @@ pnpm validate:articles   # data/articles.json の整合性チェック
 
 記事の形式・執筆ルールは `.claude/skills/ginza-article-writer/SKILL.md`、情報源の一覧は同ディレクトリの `references/source-list.md` を参照してください。型定義は `lib/articles.ts` にあります。
 
+## 新規記事の取得
+
+`.claude/skills/ginza-article-harvester/` が新規記事の収集を担当します。
+
+1. `pnpm harvest scan` で、GINZA OFFICIAL・中央区観光協会・GINZA SIX・東京ミッドタウン日比谷・ルミネ有楽町・東京国際フォーラム・ggg・築地場外市場・PR TIMES・コラボカフェ・レッツエンジョイ東京・ウォーカープラス・Google ニュース・ceek を巡回し、既存記事との重複を判定して `tmp/harvest-queue.json` に候補を書き出します。
+2. Claude Code で `/ginza-article-harvester` を実行すると、候補の事実確認・記事化・画像保存・検証までを行います。`pnpm harvest:auto` は 1〜2 を続けて実行します（編集できるファイルとコマンドを限定）。
+3. 見送った候補は `references/excluded-candidates.jsonl` に記録され、次回以降はスキップされます。
+
+その他のサブコマンド: `pnpm harvest list <情報源|all>`、`detail <url>`、`dedup "<キーワード|URL>"`、`exclude "<url>" "<理由>" "<メモ>"`、`image "<画像URL>" "<slug>"`。詳細は `.claude/skills/ginza-article-harvester/SKILL.md` を参照してください。
+
 ## ディレクトリ構成
 
 ```text
@@ -64,5 +76,5 @@ scripts/      検証スクリプト
 
 - 英語・中国語ページ（akiba の `en` / `zh` フィールド方式）
 - 会場（スポット）マスタと地図表示
-- 記事収集の自動化（akiba の harvester 相当）
+- 記事収集の定期実行（GitHub Actions）
 - アクセス解析・広告の導入

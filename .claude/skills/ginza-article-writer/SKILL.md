@@ -7,10 +7,10 @@ description: 銀座・有楽町・日比谷・東銀座・京橋エリアのイ�
 
 ## 手順
 
-1. **候補を集める**: `references/source-list.md` の情報源から、銀座エリアで開催中・開催予定のイベントやニュースを探す。
+1. **候補を集める**: `references/source-list.md` の情報源から、銀座エリアで開催中・開催予定のイベントやニュースを探す。まとめて新規記事を探すときは `ginza-article-harvester`（`pnpm harvest scan`）を使う。
 2. **重複チェック**: `data/articles.json` の `slug`・`title`・`sources[].url` と照合し、既存記事と同じイベントは追加しない（会期延長などは既存記事を更新）。
 3. **事実確認**: 公式サイト・プレスリリースなど一次情報で、名称・会期・時間・会場・住所・料金・予約要否を確認する。確認できない項目は書かない（推測で埋めない）。
-4. **画像を保存**: 公式・プレスリリースのキービジュアルを `public/images/articles/<slug>.<ext>` に保存する。拡張子は実際の形式（`file` コマンドで確認）に合わせ、`width`/`height` を記録する。出典を `image.sourceLabel`/`image.sourceUrl` に書く。
+4. **画像を保存**: 公式・プレスリリースのキービジュアルを `pnpm harvest image "<画像URL>" "<slug>"` で `public/images/articles/<slug>.<ext>` に保存する。拡張子は実際の形式（`file` コマンドで確認）に合わせ、`width`/`height` を記録する。出典を `image.sourceLabel`/`image.sourceUrl` に書く。
 5. **記事を追加**: `data/articles.json` に追記する。`id` は最大値+1。
 6. **検証**: `pnpm validate:articles && pnpm test && pnpm build`。
 
