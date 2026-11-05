@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { marked } from "marked"
+import { InArticleAd } from "@/components/elements/ad"
 import { ArticleGrid } from "@/components/elements/article-card"
 import { Breadcrumbs } from "@/components/elements/breadcrumbs"
 import {
@@ -229,6 +230,8 @@ const Page = async ({ params }: Props) => {
         className="article__body"
         dangerouslySetInnerHTML={{ __html: html }}
       />
+
+      <InArticleAd />
 
       {sources.length > 0 && (
         <section className="article__sources">
