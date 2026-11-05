@@ -44,3 +44,7 @@ lib-cov
 out/
 
 next-env.d.ts
+
+# harvester work files
+tmp/
+__pycache__/
