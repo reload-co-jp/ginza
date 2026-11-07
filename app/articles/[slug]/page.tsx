@@ -11,6 +11,7 @@ import {
   getArticleBySlug,
   getArticleImage,
   getArticleLinkSources,
+  getArticleModifiedIso,
   getArticlePublishedIso,
   getArticleTags,
   getEventBadge,
@@ -19,7 +20,7 @@ import {
   getSeoTitle,
 } from "@/lib/articles"
 import { formatDateRange, formatDotDate, getToday } from "@/lib/date"
-import { jsonLdScript } from "@/lib/json-ld"
+import { jsonLdScript, toOffer, toPostalAddress } from "@/lib/json-ld"
 import { absoluteUrl, siteName } from "@/lib/site"
 
 type Props = { params: Promise<{ slug: string }> }
@@ -49,10 +50,13 @@ export const generateMetadata = async ({
     alternates: { canonical: url },
     openGraph: {
       type: "article",
+      siteName,
+      locale: "ja_JP",
       title,
       description: article.summary,
       url,
       publishedTime: getArticlePublishedIso(article),
+      modifiedTime: getArticleModifiedIso(article),
       tags: getArticleTags(article).map((t) => t.name),
       images: [
         {
@@ -86,6 +90,8 @@ const Page = async ({ params }: Props) => {
   const sources = getArticleLinkSources(article)
   const event = article.event
   const publishedIso = getArticlePublishedIso(article)
+  const modifiedIso = getArticleModifiedIso(article)
+  const articleUrl = absoluteUrl(`/articles/${article.slug}/`)
 
   const jsonLd: Record<string, unknown>[] = [
     {
@@ -95,8 +101,8 @@ const Page = async ({ params }: Props) => {
       description: article.summary,
       image: [absoluteUrl(image.src)],
       datePublished: publishedIso,
-      dateModified: publishedIso,
-      mainEntityOfPage: absoluteUrl(`/articles/${article.slug}/`),
+      dateModified: modifiedIso,
+      mainEntityOfPage: articleUrl,
       author: {
         "@type": "Organization",
         name: `${siteName}編集部`,
@@ -107,6 +113,7 @@ const Page = async ({ params }: Props) => {
     },
   ]
   if (event && event.address) {
+    const offer = toOffer(event.price, articleUrl)
     jsonLd.push({
       "@context": "https://schema.org",
       "@type": "Event",
@@ -120,13 +127,10 @@ const Page = async ({ params }: Props) => {
       location: {
         "@type": "Place",
         name: event.venue,
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: event.address,
-          addressCountry: "JP",
-        },
+        address: toPostalAddress(event.address),
       },
-      url: absoluteUrl(`/articles/${article.slug}/`),
+      ...(offer && { offers: offer }),
+      url: articleUrl,
     })
   }
 
@@ -159,6 +163,14 @@ const Page = async ({ params }: Props) => {
           <time dateTime={publishedIso}>
             {formatDotDate(article.publishedAt)}
           </time>
+          {modifiedIso !== publishedIso && article.updatedAt && (
+            <span>
+              更新{" "}
+              <time dateTime={modifiedIso}>
+                {formatDotDate(article.updatedAt)}
+              </time>
+            </span>
+          )}
           <span>{siteName}編集部</span>
         </p>
       </header>
