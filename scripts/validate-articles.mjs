@@ -39,6 +39,11 @@ for (const a of articles) {
     err("slug は半角英小文字・数字・ハイフンのみ")
   if (a.publishedAt && !DATE.test(a.publishedAt))
     err("publishedAt は YYYY-MM-DD")
+  if (a.updatedAt !== undefined) {
+    if (!DATE.test(a.updatedAt)) err("updatedAt は YYYY-MM-DD")
+    else if (a.publishedAt && a.updatedAt < a.publishedAt)
+      err("updatedAt が publishedAt より前です")
+  }
   if (a.title?.startsWith("【"))
     err("title に【銀座】などの接頭辞は付けない（表示時に付与）")
   if (!a.content?.startsWith("## ")) err("content は ## 見出しから始める")

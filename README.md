@@ -36,7 +36,7 @@ pnpm harvest:auto        # 収集 → Claude Code で記事化 → 検証（要 
 - `/events/upcoming/` これから始まるイベント
 - `/areas/`、`/areas/[area]/` エリア別
 - `/tags/`、`/tags/[id]/` タグ別
-- `/search/` 記事検索（クライアントサイド）
+- `/search/` 記事検索（クライアントサイド、`noindex`）
 - `/about/`、`/privacy/`
 - `/rss.xml`、`/sitemap.xml`、`/news-sitemap.xml`、`/robots.txt`
 
@@ -50,6 +50,8 @@ pnpm harvest:auto        # 収集 → Claude Code で記事化 → 検証（要 
 - `public/images/articles/`: 記事サムネイル
 
 記事の形式・執筆ルールは `.claude/skills/ginza-article-writer/SKILL.md`、情報源の一覧は同ディレクトリの `references/source-list.md` を参照してください。型定義は `lib/articles.ts` にあります。
+
+公開後に本文や開催情報を更新した記事には `updatedAt`（YYYY-MM-DD）を付けます。構造化データの `dateModified`、OGP の `article:modified_time`、`sitemap.xml` の `lastmod` に使われます。
 
 ## 新規記事の取得
 

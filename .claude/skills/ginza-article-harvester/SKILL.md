@@ -99,6 +99,7 @@ pnpm -s harvest dedup "<キーワード1>|<URL1>" "<キーワード2>|<URL2>" > 
 - 情報源で確認できた事実だけを `summary` / `content` / `event` に反映する。
 - 新しい情報源は `sources` に追加する（URL正規化で重複除去、公式を先に）。gnews のリダイレクトURLは使わず、実際の記事URLを記録する。
 - `publishedAt` は更新しない。slug は変えない。
+- 本文・開催情報を更新したら `updatedAt` に作業日（YYYY-MM-DD）を入れる（`dateModified` と sitemap の lastmod に反映される）。情報源の追加だけなら変えない。
 - 新しい情報がなければ既存記事はそのまま。
 
 ## 除外ログ

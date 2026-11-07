@@ -33,6 +33,8 @@ export type Article = {
   summary: string
   content: string
   publishedAt: string
+  /** 公開後に内容を更新した日（YYYY-MM-DD）。dateModified・sitemap の lastmod に使う。 */
+  updatedAt?: string
   tagIds: number[]
   areaId: string
   image?: {
@@ -111,10 +113,23 @@ export const getSeoTitle = (article: Article) => {
   return /銀座|有楽町|日比谷|築地|京橋/.test(title) ? title : `【銀座】${title}`
 }
 
+const toJstIso = (date: string) =>
+  /^\d{4}-\d{2}-\d{2}$/.test(date) ? `${date}T00:00:00+09:00` : date
+
 export const getArticlePublishedIso = (article: Article) =>
-  /^\d{4}-\d{2}-\d{2}$/.test(article.publishedAt)
-    ? `${article.publishedAt}T00:00:00+09:00`
-    : article.publishedAt
+  toJstIso(article.publishedAt)
+
+/** 最終更新日時。updatedAt がなければ公開日時。 */
+export const getArticleModifiedIso = (article: Article) =>
+  toJstIso(
+    article.updatedAt && article.updatedAt > article.publishedAt
+      ? article.updatedAt
+      : article.publishedAt
+  )
+
+/** 記事群の中で最も新しい更新日時（sitemap の lastmod 用）。 */
+export const getLatestModifiedIso = (list: Article[]) =>
+  list.map(getArticleModifiedIso).sort().at(-1)
 
 // ---- events ----
 

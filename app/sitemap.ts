@@ -2,8 +2,10 @@ import type { MetadataRoute } from "next"
 import {
   getAllAreas,
   getAllArticles,
-  getArticlePublishedIso,
+  getArticleModifiedIso,
   getArticlesByAreaId,
+  getArticlesByTagId,
+  getLatestModifiedIso,
   getUsedTags,
 } from "@/lib/articles"
 import { absoluteUrl } from "@/lib/site"
@@ -19,14 +21,13 @@ const staticPaths = [
   "/events/upcoming/",
   "/areas/",
   "/tags/",
-  "/search/",
   "/about/",
   "/privacy/",
 ]
 
 const sitemap = (): MetadataRoute.Sitemap => {
   const articles = getAllArticles()
-  const latest = articles[0] ? getArticlePublishedIso(articles[0]) : undefined
+  const latest = getLatestModifiedIso(articles)
   return [
     ...staticPaths.map((path) => ({
       url: absoluteUrl(path),
@@ -36,7 +37,7 @@ const sitemap = (): MetadataRoute.Sitemap => {
     })),
     ...articles.map((article) => ({
       url: absoluteUrl(`/articles/${article.slug}/`),
-      lastModified: getArticlePublishedIso(article),
+      lastModified: getArticleModifiedIso(article),
       changeFrequency: "weekly" as const,
       priority: 0.8,
       ...(article.image && { images: [absoluteUrl(article.image.src)] }),
@@ -45,11 +46,13 @@ const sitemap = (): MetadataRoute.Sitemap => {
       .filter((area) => getArticlesByAreaId(area.id).length > 0)
       .map((area) => ({
         url: absoluteUrl(`/areas/${area.id}/`),
+        lastModified: getLatestModifiedIso(getArticlesByAreaId(area.id)),
         changeFrequency: "daily" as const,
         priority: 0.6,
       })),
     ...getUsedTags().map((tag) => ({
       url: absoluteUrl(`/tags/${tag.id}/`),
+      lastModified: getLatestModifiedIso(getArticlesByTagId(tag.id)),
       changeFrequency: "daily" as const,
       priority: 0.5,
     })),
