@@ -9,6 +9,8 @@ export const metadata: Metadata = {
   title: "記事を検索",
   description: "銀座Nowの記事をキーワードで検索できます。",
   alternates: { canonical: "/search/" },
+  // 検索ページは結果がクライアント側で変わるだけの薄いページなので索引させない
+  robots: { index: false, follow: true },
 }
 
 const Page = () => {
