@@ -22,3 +22,31 @@
 {"url": "https://www.sponichi.co.jp/entertainment/news/2026/11/08/kiji/20261108s00041000011000c.html", "reason": "event_ended", "note": "シネスイッチ銀座は10/25閉館済み（ルミアーク銀座記事で言及）", "checked": "2026-11-08"}
 {"url": "https://www.lumine.ne.jp/yurakucho/news/detail/?cd=013026&scd=000687", "reason": "low_value", "note": "@cosme BEAUTYDAY 館内キャンペーン", "checked": "2026-11-08"}
 {"url": "https://ginza6.tokyo/news/detail/shopnews/224369", "reason": "low_value", "note": "ストーンアイランド ポップアップ。公式ページの情報が商品1点のみ", "checked": "2026-11-08"}
+{"url": "https://www.enjoytokyo.jp/event/2086191/", "reason": "out_of_scope_area", "note": "グッドデザイン 私の選んだ一品。丸の内の小規模展示", "checked": "2026-11-08"}
+{"url": "https://www.enjoytokyo.jp/event/2091249/", "reason": "insufficient_facts", "note": "宇宙兄弟メタルキャンバスアート展 東京会場名未確認", "checked": "2026-11-08"}
+{"url": "https://www.enjoytokyo.jp/event/2003774/", "reason": "low_value", "note": "プラネタリウム上映前のイルミ映像", "checked": "2026-11-08"}
+{"url": "https://www.walkerplus.com/event/ar0313e600991/", "reason": "low_value", "note": "プラネタリア常設プログラム（7月〜）", "checked": "2026-11-08"}
+{"url": "https://www.walkerplus.com/event/ar0313e154521/", "reason": "low_value", "note": "日比谷公園の紅葉、会期なしの名所案内", "checked": "2026-11-08"}
+{"url": "https://www.enjoytokyo.jp/event/2073402/", "reason": "low_value", "note": "ARTE TOKYO 全都の芸術祭、銀座エリア固有の企画は別記事で扱う", "checked": "2026-11-08"}
+{"url": "https://www.enjoytokyo.jp/event/2021252/", "reason": "low_value", "note": "東京国際フォーラム ホールAのコンサート", "checked": "2026-11-08"}
+{"url": "https://www.enjoytokyo.jp/event/2091264/", "reason": "low_value", "note": "東京国際フォーラム ホールAのラジオ局イベント", "checked": "2026-11-08"}
+{"url": "https://www.t-i-forum.co.jp/visitors/event/detail.html?id=20261119_1016", "reason": "insufficient_facts", "note": "ネオ屋台村 ボジョレーナイト 時間・内容不明", "checked": "2026-11-08"}
+{"url": "https://www.t-i-forum.co.jp/visitors/event/detail.html?id=20261107_1002", "reason": "event_ended", "note": "大江戸骨董市 11/7", "checked": "2026-11-08"}
+{"url": "https://www.t-i-forum.co.jp/visitors/event/detail.html?id=20261101_0903", "reason": "event_ended", "note": "東京サンフェア 11/1", "checked": "2026-11-08"}
+{"url": "https://www.t-i-forum.co.jp/visitors/event/detail.html?id=20261108_1027", "reason": "event_ended", "note": "ベストフリーマーケット 11/8", "checked": "2026-11-08"}
+{"url": "https://www.ginza.jp/event/35565", "reason": "event_ended", "note": "銀茶会 10/25", "checked": "2026-11-08"}
+{"url": "https://www.ginza.jp/event/35539", "reason": "event_ended", "note": "ゆかたで銀ぶら 8/1", "checked": "2026-11-08"}
+{"url": "https://www.ginza.jp/event/35424", "reason": "event_ended", "note": "銀茶会 作品募集", "checked": "2026-11-08"}
+{"url": "https://www.chuo-kanko.or.jp/blogs/event/2609171828", "reason": "event_ended", "note": "アンテナショップスタンプラリー 10/29まで", "checked": "2026-11-08"}
+{"url": "https://www.ginza.jp/shopnews/shopnews-nagai-garou/35405", "reason": "low_value", "note": "千住博 特別展示 11/10終了間近", "checked": "2026-11-08"}
+{"url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBPTnhreU5vclJjWlU2dDhnM2RMV3lJQVF3UDVtM04xUDlTelQyX2dGSGZqanBHTUdIM1hITk43MHZ3YWpzOWRZZmNxOFdxMjVDbmNjTzk3Y1VVR3F3My03cXpHYV91ZWVZZHVhRWRoWW5NX2ZnaXc?oc=5", "reason": "insufficient_facts", "note": "タグ・ホイヤー 東京 銀座 新店の住所・営業時間が未確認", "checked": "2026-11-08"}
+{"url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1WLVBHYWhXUU5pbExha0Nlb0tHanJnb0Q1VkFpNTlVLTQtTlBUOGFSVndkMnI1RVhxSG1kWU9NLThHOHhOaDE5WVFaNjJlTlMydEN0VkNGQkVmUmFV?oc=5", "reason": "insufficient_facts", "note": "Café Swarovski 2026 料金・公式本文未確認", "checked": "2026-11-08"}
+{"url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9CUUl1b2FzdDdtZW1MS1FXNkV3VzlXREpIN0xBQW5QUmtpWjVQWkVmY3ZNejRJdVN2SF9zZlBLdENvMGtUYU1mcWNfVjJUWW5qejFGUGlnYmVNaGo0Z0E?oc=5", "reason": "insufficient_facts", "note": "冬メニューの内容・期間未確認", "checked": "2026-11-08"}
+{"url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBuUlgtR3lPaTFpd0d4Y1h3Si1YWmRORjdQalg4a055bmgxNVRZNE84clE0Rk5Yd2ZSaVB5MnplUE5salNBcXk1ZDRnN0wzdUotRExWZUZvbFRWeDFIUEFVbWtERm5TY3pGc1hKbC1ZVXVaeXNscl9JWFZDV0VuRE0?oc=5", "reason": "insufficient_facts", "note": "招福袋の内容・販売日未確認", "checked": "2026-11-08"}
+{"url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5HdGVxUXBLSkE0STF0UFE2ZUxDMG96TWtDQzJnR3ZpZnRtNGR0VThUOXU4Uk1IOFZhemVxdUxPbUVwaDRkNjN3M0xPWDNQRFdPT2pLSzd4QkpMaG50QXlmbDZkZlJON09KT095WlVWZlhkeUE0QTFB?oc=5", "reason": "insufficient_facts", "note": "コートヤード銀座東武 クリスマスAT 2026情報未確認", "checked": "2026-11-08"}
+{"url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQM1RfZy1pdGM1c3EwUElvX0cyVUhmWUpGRUFlQ1FnaXdPaXZoRlpXOTNuWWotVTNHaFpyMnVsM2hkeGlyM2NSdnBuVjZPUVBBRTlQZ2s1bTdTTlpPWXVVanFpeVJGbDEzM21MbElKajAwdGtNU1EyQmdXcERtd1lyWkI5X3oxMjNkWFd5eWRlR0FHZw?oc=5", "reason": "insufficient_facts", "note": "新＊童画展 会期未確認", "checked": "2026-11-08"}
+{"url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE95V2VRNEVfeE5jdlhqaXNTMmltWUhxZlJ0YTJVekp5S0hNY2pJTTZfVUc1LTM4djU0WnJzQ0V2ekNZNDJfU0JnZnBXMkt4alFfcWRkQ285VDFHLW1ESkxSTFFFNFlrYUJXTEIxamxDaVNTU0RlRjdhelkyQlB1b1U?oc=5", "reason": "low_value", "note": "屋上稲刈りは社員中心で一般参加不可・終了済み", "checked": "2026-11-08"}
+{"url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE85N2FUSlZBVzNSZG9IY0NEMnBpLTlaRms4ZnRpZ041a3JicTRERW1aZjRtZjNaVHZ4OEIzdWFWUFNUMTl5SkoxWEEwNU95UHJQOWJUa2d3?oc=5", "reason": "insufficient_facts", "note": "オープン日・住所未確認", "checked": "2026-11-08"}
+{"url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE1rTS1VbUgwbTlVdmJCdnBWaWV0SVBhV0lsQURaeFRXQTRDbUVjYUpfRTBBdjhwZTBnNlBJSWdNTjFvNGpiMGNPQUlfeXc?oc=5", "reason": "insufficient_facts", "note": "会場・会期未確認", "checked": "2026-11-08"}
+{"url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE1QeWREb0FNTGEtTGc1RkRJV2J0bDdwT2prYTlJcF9CeXR5Mm5Pa2t1QzdpUlRULXA0ekhjYnQycFFKVUhzMHpOOA?oc=5", "reason": "insufficient_facts", "note": "企画の会期未確認", "checked": "2026-11-08"}
+{"url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE43OWNvNnBvc1I3SGhoWjJaSW93LWVaRlJPdjlwcm9GYkpLeHBMSkl2WndLVlR2X2lILVFYS28ySGxxQWhqQXB2VlBRNXAwQ2NJcGNzZ3ZoSVhSbTl1ZElrYU5kRjhoSjJ3N3lFM3c0OFRjc1lLd2c?oc=5", "reason": "insufficient_facts", "note": "銀座 蔦屋書店フェア 会期未確認", "checked": "2026-11-08"}
