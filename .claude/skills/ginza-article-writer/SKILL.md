@@ -59,6 +59,7 @@ description: 銀座・有楽町・日比谷・東銀座・京橋エリアのイ�
 - `areaId` は `data/areas.json` の `ginza` / `yurakucho-hibiya` / `higashi-ginza` / `kyobashi` から選ぶ。
 - `tagIds` は `data/tags.json` の既存タグを優先。新しいタグが必要なら `tags.json` に追加する。
 - `event.address` を書くと Event 構造化データが出力される。住所が確認できた場合のみ書く。
+- `event.address` を書いたら `pnpm geocode:events` を実行し、`event.latitude` / `event.longitude` を付与する（国土地理院の住所検索API）。番地まで特定できた住所だけ座標が入り、記事に会場の地図が表示される。座標は手で推測して書かない。
 - `event.price` は表示用テキスト。料金が明記されていない屋外イベントは「屋外・観覧自由」など事実の範囲で書く。
 - `sources` は信頼度順（公式 → チケット・会場 → プレスリリース → まとめサイト）。画像出典 URL も含める。
 - すでに終了した部分（応募締切、前期展示など）は本文で明記する。

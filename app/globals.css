@@ -727,6 +727,26 @@ h3 {
   text-decoration-color: rgba(201, 168, 106, 0.6);
 }
 
+.place-map {
+  margin-top: 1.25rem;
+}
+
+.place-map__frame {
+  aspect-ratio: 4 / 3;
+  border: 0;
+  border-radius: var(--radius);
+  display: block;
+  max-height: 420px;
+  width: 100%;
+}
+
+.place-map__link {
+  display: inline-block;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  text-decoration-color: rgba(201, 168, 106, 0.6);
+}
+
 .article__body,
 .prose {
   font-size: 1rem;

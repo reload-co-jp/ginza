@@ -22,6 +22,7 @@ pnpm test                # ユニットテスト
 pnpm lint
 pnpm typecheck
 pnpm validate:articles   # data/articles.json の整合性チェック
+pnpm geocode:events      # event.address から会場の緯度経度を付与（地図表示用）
 pnpm harvest scan        # 新規記事候補の収集（tmp/harvest-queue.json）
 pnpm harvest:auto        # 収集 → Claude Code で記事化 → 検証（要 claude CLI）
 ```

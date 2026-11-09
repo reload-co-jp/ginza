@@ -20,6 +20,7 @@ import {
   getSeoTitle,
 } from "@/lib/articles"
 import { formatDateRange, formatDotDate, getToday } from "@/lib/date"
+import { googleMapsUrl, PlaceMap } from "@/components/elements/place-map"
 import { jsonLdScript, toOffer, toPostalAddress } from "@/lib/json-ld"
 import { absoluteUrl, siteName } from "@/lib/site"
 
@@ -112,6 +113,11 @@ const Page = async ({ params }: Props) => {
       keywords: tags.map((t) => t.name),
     },
   ]
+  // 緯度経度があれば地図を表示し、構造化データにも含める
+  const coords =
+    event?.latitude != null && event.longitude != null
+      ? { latitude: event.latitude, longitude: event.longitude }
+      : undefined
   if (event && event.address) {
     const offer = toOffer(event.price, articleUrl)
     jsonLd.push({
@@ -128,6 +134,10 @@ const Page = async ({ params }: Props) => {
         "@type": "Place",
         name: event.venue,
         address: toPostalAddress(event.address),
+        ...(coords && {
+          geo: { "@type": "GeoCoordinates", ...coords },
+          hasMap: googleMapsUrl(coords.latitude, coords.longitude),
+        }),
       },
       ...(offer && { offers: offer }),
       url: articleUrl,
@@ -235,6 +245,7 @@ const Page = async ({ params }: Props) => {
             <dt>予約</dt>
             <dd>{event.reservation ? "必要（日時指定など）" : "不要"}</dd>
           </dl>
+          {coords && <PlaceMap {...coords} name={event.venue} />}
         </aside>
       )}
 

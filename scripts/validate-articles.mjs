@@ -71,6 +71,22 @@ for (const a of articles) {
       err("event の日付は YYYY-MM-DD")
     else if (e.startDate > e.endDate)
       err("event.startDate が endDate より後です")
+    if ((e.latitude == null) !== (e.longitude == null))
+      err("event.latitude と event.longitude は両方そろえる")
+    if (e.latitude != null && !e.address)
+      err("event.latitude/longitude は event.address がある場合のみ")
+    if (
+      e.latitude != null &&
+      !(
+        typeof e.latitude === "number" &&
+        typeof e.longitude === "number" &&
+        e.latitude > 35.5 &&
+        e.latitude < 35.9 &&
+        e.longitude > 139.5 &&
+        e.longitude < 140
+      )
+    )
+      err("event.latitude/longitude が東京都心の範囲外です")
   }
 }
 

@@ -13,9 +13,10 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
+    "geocode:events": "node scripts/geocode-events.mjs",
     "validate:articles": "node scripts/validate-articles.mjs",
     "harvest": "python3 .claude/skills/ginza-article-harvester/scripts/harvest.py",
-    "harvest:auto": "pnpm harvest scan && claude -p '/ginza-article-harvester `pnpm harvest scan` has already run: start from tmp/harvest-queue.json and do not rerun scan. Save images only via `pnpm harvest image`. Skip pnpm build (run afterwards).' --allowedTools 'Read,Glob,Grep,Skill,Agent,WebFetch,WebSearch,Edit(data/articles.json),Edit(data/tags.json),Edit(.claude/skills/ginza-article-harvester/references/excluded-candidates.jsonl),Bash(pnpm harvest:*),Bash(pnpm run validate:articles),Bash(git status:*),Bash(git diff:*)' && pnpm validate:articles"
+    "harvest:auto": "pnpm harvest scan && claude -p '/ginza-article-harvester `pnpm harvest scan` has already run: start from tmp/harvest-queue.json and do not rerun scan. Save images only via `pnpm harvest image`. Skip pnpm build (run afterwards).' --allowedTools 'Read,Glob,Grep,Skill,Agent,WebFetch,WebSearch,Edit(data/articles.json),Edit(data/tags.json),Edit(.claude/skills/ginza-article-harvester/references/excluded-candidates.jsonl),Bash(pnpm harvest:*),Bash(pnpm run validate:articles),Bash(git status:*),Bash(git diff:*)' && pnpm geocode:events && pnpm validate:articles"
   },
   "keywords": [],
   "author": "",
