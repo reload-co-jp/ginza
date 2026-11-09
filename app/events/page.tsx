@@ -10,6 +10,8 @@ import {
   getUpcomingEvents,
 } from "@/lib/articles"
 import { getToday } from "@/lib/date"
+import { jsonLdScript } from "@/lib/json-ld"
+import { absoluteUrl, siteName } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: "銀座のイベント一覧（開催中・開催予定）",
@@ -25,8 +27,35 @@ const Page = () => {
   const ended = getAllEvents().filter(
     (a) => getEventStatus(a.event, today) === "ended"
   )
+  const pageUrl = absoluteUrl("/events/")
+  const listed = [...ongoing, ...upcoming]
+  // 一覧ページであることと掲載イベントを検索エンジンに伝える
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": pageUrl,
+    url: pageUrl,
+    name: "銀座のイベント一覧（開催中・開催予定）",
+    inLanguage: "ja",
+    dateModified: today,
+    isPartOf: { "@type": "WebSite", name: siteName, url: absoluteUrl("/") },
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: listed.length,
+      itemListElement: listed.map((article, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: absoluteUrl(`/articles/${article.slug}/`),
+        name: article.title,
+      })),
+    },
+  }
   return (
     <div id="content">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(jsonLd) }}
+      />
       <Breadcrumbs items={[{ label: "イベント" }]} />
       <PageHeader
         eyebrow="Events"
