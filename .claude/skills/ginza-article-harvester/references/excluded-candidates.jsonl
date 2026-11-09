@@ -50,3 +50,9 @@
 {"url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE1rTS1VbUgwbTlVdmJCdnBWaWV0SVBhV0lsQURaeFRXQTRDbUVjYUpfRTBBdjhwZTBnNlBJSWdNTjFvNGpiMGNPQUlfeXc?oc=5", "reason": "insufficient_facts", "note": "会場・会期未確認", "checked": "2026-11-08"}
 {"url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE1QeWREb0FNTGEtTGc1RkRJV2J0bDdwT2prYTlJcF9CeXR5Mm5Pa2t1QzdpUlRULXA0ekhjYnQycFFKVUhzMHpOOA?oc=5", "reason": "insufficient_facts", "note": "企画の会期未確認", "checked": "2026-11-08"}
 {"url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE43OWNvNnBvc1I3SGhoWjJaSW93LWVaRlJPdjlwcm9GYkpLeHBMSkl2WndLVlR2X2lILVFYS28ySGxxQWhqQXB2VlBRNXAwQ2NJcGNzZ3ZoSVhSbTl1ZElrYU5kRjhoSjJ3N3lFM3c0OFRjc1lLd2c?oc=5", "reason": "insufficient_facts", "note": "銀座 蔦屋書店フェア 会期未確認", "checked": "2026-11-08"}
+{"url": "https://www.enjoytokyo.jp/event/2091309/", "reason": "low_value", "note": "ワンコイン三線体験（東京交通会館、2027/2/11）小規模", "checked": "2026-11-09"}
+{"url": "https://www.lumine.ne.jp/yurakucho/topics/detail/?cd=004318", "reason": "low_value", "note": "ルミネ有楽町 抽選キャンペーン（ツリーはポケモン記事で言及）", "checked": "2026-11-09"}
+{"url": "https://www.lumine.ne.jp/yurakucho/news/detail/?cd=013164&scd=000765", "reason": "low_value", "note": "館内ショップのポップアップ", "checked": "2026-11-09"}
+{"url": "https://www.lumine.ne.jp/yurakucho/news/detail/?cd=013152&scd=000782", "reason": "low_value", "note": "館内ショップのお知らせ", "checked": "2026-11-09"}
+{"url": "https://prtimes.jp/main/html/rd/p/000003228.000005794.html", "reason": "low_value", "note": "資生堂ウィンドウの受賞ニュース", "checked": "2026-11-09"}
+{"url": "https://prtimes.jp/main/html/rd/p/000000334.000047083.html", "reason": "not_ginza_specific", "note": "ダイアナ 商品発売", "checked": "2026-11-09"}
