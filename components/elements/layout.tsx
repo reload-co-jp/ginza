@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { ReactNode } from "react"
 import { siteName, siteNameEn, siteTagline } from "@/lib/site"
+import { getSisterSites, SISTER_SITES_HEADING } from "@/lib/sister-sites"
 
 export const navItems = [
   { href: "/events/", label: "開催中" },
@@ -61,6 +62,18 @@ export const Footer = () => (
           <a href="/rss.xml">RSS</a>
         </li>
       </ul>
+      <nav aria-label={SISTER_SITES_HEADING.ja} className="site-footer__sister">
+        <p className="site-footer__sister-heading">{SISTER_SITES_HEADING.ja}</p>
+        <ul className="site-footer__links">
+          {getSisterSites("ginza").map((site) => (
+            <li key={site.id}>
+              <a href={site.url} title={site.name}>
+                {site.label.ja}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
       <p className="site-footer__note">
         掲載情報は記事公開時点のものです。最新情報は各公式サイトをご確認ください。
       </p>

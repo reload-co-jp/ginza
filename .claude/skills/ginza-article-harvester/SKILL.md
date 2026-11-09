@@ -29,7 +29,7 @@ metadata:
 4. **重複チェックをまとめて行う**: 事実確認の前に、選んだ候補すべてを一括で照合する（[重複チェック](#重複チェック)）。
 5. **事実確認**: `pnpm harvest detail "<url>" ...` で詳細ページを確認し、必要に応じて公式ページ・プレスリリースを探す。会期・時間・会場・住所・料金・予約・画像を一次情報で確定する。
 6. **記事を書く**: 確認できた候補と重複マージをまとめて `data/articles.json` に追加する（`ginza-article-writer` の形式）。画像は `pnpm harvest image "<画像URL>" "<slug>"` で保存する。
-7. **検証**: `pnpm validate:articles` → `pnpm test` → `pnpm build`（ビルドはバッチ全体で1回）。
+7. **検証**: `pnpm geocode:events`（会場の座標付与）→ `pnpm validate:articles` → `pnpm test` → `pnpm build`（ビルドはバッチ全体で1回）。
 
 出力が長くなるコマンドはファイルにリダイレクトしてから読む:
 
